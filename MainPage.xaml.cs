@@ -17,26 +17,75 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        await DisplayAlert("Search", $"Searching: {searchText}", "OK");
+        // Provide haptic feedback
+        try
+        {
+            HapticFeedback.Perform(HapticFeedbackType.Click);
+        }
+        catch { }
+
+        await DisplayAlert("Search", $"Searching for: {searchText}", "OK");
     }
 
     private async void OnRecipesClicked(object sender, EventArgs e)
     {
-        await DisplayAlert("Recipes", "Opening recipe browser...", "OK");
+        // Provide haptic feedback
+        try
+        {
+            HapticFeedback.Perform(HapticFeedbackType.Click);
+        }
+        catch { }
+
+        await DisplayAlert("Recipes", "Opening 1000+ delicious recipes...", "OK");
     }
 
     private async void OnNearbyClicked(object sender, EventArgs e)
     {
+        // Provide haptic feedback
+        try
+        {
+            HapticFeedback.Perform(HapticFeedbackType.Click);
+        }
+        catch { }
+
         await Shell.Current.GoToAsync("//LocationPage");
     }
 
     private async void OnScanClicked(object sender, EventArgs e)
     {
+        // Provide haptic feedback
+        try
+        {
+            HapticFeedback.Perform(HapticFeedbackType.Click);
+        }
+        catch { }
+
         await Shell.Current.GoToAsync("//CameraPage");
     }
 
     private async void OnFavoritesClicked(object sender, EventArgs e)
     {
-        await DisplayAlert("Favorites", "Opening your saved recipes...", "OK");
+        // Provide haptic feedback
+        try
+        {
+            HapticFeedback.Perform(HapticFeedbackType.Click);
+        }
+        catch { }
+
+        await DisplayAlert("Favorites", "You have 12 saved recipes", "OK");
+    }
+
+    private async void OnFeaturedRecipeClicked(object sender, EventArgs e)
+    {
+        // Provide haptic feedback
+        try
+        {
+            HapticFeedback.Perform(HapticFeedbackType.Click);
+        }
+        catch { }
+
+        await DisplayAlert("Classic Beef Noodle Soup", 
+            "Ingredients:\n- 500g beef\n- 200g noodles\n- Green onions\n- Soy sauce\n- Star anise\n\nCooking time: 45 minutes\nDifficulty: Easy", 
+            "Start Cooking");
     }
 }

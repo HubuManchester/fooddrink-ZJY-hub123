@@ -5,48 +5,151 @@
              BackgroundColor="{StaticResource Background}"
              Title="Scan Food">
 
-    <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
 
-        <Frame BackgroundColor="{StaticResource Surface}"
-               CornerRadius="16"
-               Padding="40"
-               BorderColor="#E0E0E0"
-               HasShadow="True"
-               HorizontalOptions="Center">
-            <VerticalStackLayout Spacing="20" HorizontalOptions="Center">
-                <Label Text="Camera"
-                       FontSize="64"
-                       HorizontalOptions="Center"/>
-                <Label Text="Scan ingredients with your camera"
-                       FontSize="16"
-                       TextColor="{StaticResource TextSecondary}"
-                       HorizontalOptions="Center"/>
+            <!-- Header Banner -->
+            <Frame BackgroundColor="{StaticResource Accent}"
+                   CornerRadius="0"
+                   Padding="24,36,24,28"
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Scan Food"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                    <Label Text="Take a photo to identify ingredients and get recipe suggestions"
+                           FontSize="14"
+                           TextColor="#FFFFFFCC"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <VerticalStackLayout Padding="20,24" Spacing="20">
+
+                <!-- Camera Viewfinder Area -->
+                <Frame BackgroundColor="#1A1A1A"
+                       CornerRadius="20"
+                       Padding="0"
+                       HasShadow="True"
+                       HeightRequest="280">
+                    <Grid>
+                        <!-- Placeholder when no image -->
+                        <VerticalStackLayout x:Name="CameraPlaceholder"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            Spacing="16">
+                            <Frame BackgroundColor="#333333"
+                                   CornerRadius="50"
+                                   Padding="24"
+                                   HasShadow="False"
+                                   HorizontalOptions="Center">
+                                <Label Text="&#x1F4F7;"
+                                       FontSize="48"
+                                       HorizontalOptions="Center"/>
+                            </Frame>
+                            <Label Text="Camera Preview"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#AAAAAA"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Tap 'Take Photo' to scan your food"
+                                   FontSize="13"
+                                   TextColor="#777777"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+
+                        <!-- Captured Image -->
+                        <Image x:Name="CapturedImage"
+                               Aspect="AspectFill"
+                               IsVisible="False"/>
+
+                        <!-- Corner Guides -->
+                        <BoxView BackgroundColor="{StaticResource Accent}"
+                                 WidthRequest="30" HeightRequest="4"
+                                 HorizontalOptions="Start" VerticalOptions="Start"
+                                 Margin="16,16,0,0"/>
+                        <BoxView BackgroundColor="{StaticResource Accent}"
+                                 WidthRequest="4" HeightRequest="30"
+                                 HorizontalOptions="Start" VerticalOptions="Start"
+                                 Margin="16,16,0,0"/>
+                        <BoxView BackgroundColor="{StaticResource Accent}"
+                                 WidthRequest="30" HeightRequest="4"
+                                 HorizontalOptions="End" VerticalOptions="Start"
+                                 Margin="0,16,16,0"/>
+                        <BoxView BackgroundColor="{StaticResource Accent}"
+                                 WidthRequest="4" HeightRequest="30"
+                                 HorizontalOptions="End" VerticalOptions="Start"
+                                 Margin="0,16,16,0"/>
+                        <BoxView BackgroundColor="{StaticResource Accent}"
+                                 WidthRequest="30" HeightRequest="4"
+                                 HorizontalOptions="Start" VerticalOptions="End"
+                                 Margin="16,0,0,16"/>
+                        <BoxView BackgroundColor="{StaticResource Accent}"
+                                 WidthRequest="4" HeightRequest="30"
+                                 HorizontalOptions="Start" VerticalOptions="End"
+                                 Margin="16,0,0,16"/>
+                        <BoxView BackgroundColor="{StaticResource Accent}"
+                                 WidthRequest="30" HeightRequest="4"
+                                 HorizontalOptions="End" VerticalOptions="End"
+                                 Margin="0,0,16,16"/>
+                        <BoxView BackgroundColor="{StaticResource Accent}"
+                                 WidthRequest="4" HeightRequest="30"
+                                 HorizontalOptions="End" VerticalOptions="End"
+                                 Margin="0,0,16,16"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Result Label -->
+                <Frame x:Name="ResultFrame"
+                       BackgroundColor="{StaticResource TagGreen}"
+                       CornerRadius="14"
+                       Padding="16,12"
+                       HasShadow="False"
+                       IsVisible="False">
+                    <Label x:Name="ResultLabel"
+                           Text=""
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TagGreenText}"
+                           HorizontalOptions="Center"/>
+                </Frame>
+
+                <!-- Action Buttons -->
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                    <Button Grid.Column="0"
+                            Text="Take Photo"
+                            Style="{StaticResource PrimaryButton}"
+                            Clicked="OnTakePhotoClicked"
+                            HorizontalOptions="Fill"/>
+                    <Button Grid.Column="1"
+                            Text="Gallery"
+                            Style="{StaticResource SecondaryButton}"
+                            Clicked="OnPickPhotoClicked"
+                            HorizontalOptions="Fill"/>
+                </Grid>
+
+                <!-- Tips Card -->
+                <Frame BackgroundColor="{StaticResource TagOrange}"
+                       CornerRadius="16"
+                       Padding="16"
+                       HasShadow="False">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Tips for best results"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TagOrangeText}"/>
+                        <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8" RowDefinitions="Auto,Auto,Auto" RowSpacing="6">
+                            <Label Grid.Row="0" Grid.Column="0" Text="1." FontSize="13" TextColor="{StaticResource TagOrangeText}" FontAttributes="Bold"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Make sure the food is well-lit and in focus" FontSize="13" TextColor="#E65100"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="2." FontSize="13" TextColor="{StaticResource TagOrangeText}" FontAttributes="Bold"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="Place food flat on a plain background" FontSize="13" TextColor="#E65100"/>
+                            <Label Grid.Row="2" Grid.Column="0" Text="3." FontSize="13" TextColor="{StaticResource TagOrangeText}" FontAttributes="Bold"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="Keep the camera steady for a sharp image" FontSize="13" TextColor="#E65100"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
             </VerticalStackLayout>
-        </Frame>
-
-        <Image x:Name="CapturedImage"
-               HeightRequest="200"
-               Aspect="AspectFit"
-               IsVisible="False"/>
-
-        <Button Text="Take Photo"
-                Style="{StaticResource PrimaryButton}"
-                Clicked="OnTakePhotoClicked"
-                HorizontalOptions="Center"/>
-
-        <Button Text="Pick from Gallery"
-                BackgroundColor="{StaticResource Secondary}"
-                TextColor="White"
-                CornerRadius="12"
-                Padding="20,14"
-                Clicked="OnPickPhotoClicked"
-                HorizontalOptions="Center"/>
-
-        <Label x:Name="ResultLabel"
-               Text=""
-               FontSize="16"
-               TextColor="{StaticResource TextPrimary}"
-               HorizontalOptions="Center"/>
-
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

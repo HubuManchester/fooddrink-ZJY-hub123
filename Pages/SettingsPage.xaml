@@ -6,103 +6,280 @@
              Title="Settings">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="16">
+        <VerticalStackLayout Spacing="0">
 
-            <!-- Appearance Section -->
-            <Label Text="Appearance"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   TextColor="{StaticResource TextPrimary}"/>
-
-            <Frame BackgroundColor="{StaticResource Surface}"
-                   CornerRadius="16"
-                   Padding="16"
-                   BorderColor="#E0E0E0"
-                   HasShadow="True">
-                <VerticalStackLayout Spacing="16">
-                    <Grid ColumnDefinitions="*, Auto">
-                        <Label Text="Dark Mode"
-                               FontSize="16"
-                               VerticalOptions="Center"
-                               TextColor="{StaticResource TextPrimary}"/>
-                        <Switch Grid.Column="1"
-                                x:Name="DarkModeSwitch"
-                                Toggled="OnDarkModeToggled"/>
-                    </Grid>
-                    <BoxView HeightRequest="1" Color="#E0E0E0"/>
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="Font Size"
-                               FontSize="16"
-                               TextColor="{StaticResource TextPrimary}"/>
-                        <Slider x:Name="FontSizeSlider"
-                                Minimum="12"
-                                Maximum="24"
-                                Value="16"
-                                ValueChanged="OnFontSizeChanged"/>
-                        <Label x:Name="FontSizeLabel"
-                               Text="16"
+            <!-- Header Banner -->
+            <Frame BackgroundColor="{StaticResource Secondary}"
+                   CornerRadius="0"
+                   Padding="24,36,24,28"
+                   HasShadow="False">
+                <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0" Spacing="6">
+                        <Label Text="Settings"
+                               FontSize="28"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+                        <Label Text="Customise your experience"
                                FontSize="14"
-                               TextColor="{StaticResource TextSecondary}"
-                               HorizontalOptions="Center"/>
+                               TextColor="#FFFFFFCC"/>
                     </VerticalStackLayout>
-                </VerticalStackLayout>
+                    <Frame Grid.Column="1"
+                           BackgroundColor="#FFFFFF22"
+                           CornerRadius="30"
+                           Padding="14"
+                           HasShadow="False"
+                           VerticalOptions="Center">
+                        <Label Text="&#x2699;"
+                               FontSize="28"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Frame>
+                </Grid>
             </Frame>
 
-            <!-- Notifications Section -->
-            <Label Text="Notifications"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   TextColor="{StaticResource TextPrimary}"/>
+            <VerticalStackLayout Padding="20,24" Spacing="24">
 
-            <Frame BackgroundColor="{StaticResource Surface}"
-                   CornerRadius="16"
-                   Padding="16"
-                   BorderColor="#E0E0E0"
-                   HasShadow="True">
-                <VerticalStackLayout Spacing="16">
-                    <Grid ColumnDefinitions="*, Auto">
-                        <Label Text="Push Notifications"
-                               FontSize="16"
-                               VerticalOptions="Center"
-                               TextColor="{StaticResource TextPrimary}"/>
-                        <Switch Grid.Column="1" IsToggled="True"/>
-                    </Grid>
-                    <BoxView HeightRequest="1" Color="#E0E0E0"/>
-                    <Grid ColumnDefinitions="*, Auto">
-                        <Label Text="Email Notifications"
-                               FontSize="16"
-                               VerticalOptions="Center"
-                               TextColor="{StaticResource TextPrimary}"/>
-                        <Switch Grid.Column="1" IsToggled="False"/>
-                    </Grid>
+                <!-- Appearance Section -->
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Appearance"
+                           Style="{StaticResource SectionHeader}"/>
+
+                    <Frame Style="{StaticResource Card}" Padding="0">
+                        <VerticalStackLayout>
+                            <!-- Dark Mode Row -->
+                            <Grid ColumnDefinitions="Auto, *, Auto"
+                                  Padding="18,16"
+                                  ColumnSpacing="14">
+                                <Frame Grid.Column="0"
+                                       BackgroundColor="#E8EAF6"
+                                       CornerRadius="10"
+                                       Padding="10"
+                                       HasShadow="False"
+                                       WidthRequest="42"
+                                       HeightRequest="42">
+                                    <Label Text="&#x1F319;"
+                                           FontSize="18"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Dark Mode"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimary}"/>
+                                    <Label Text="Switch to dark theme"
+                                           FontSize="12"
+                                           TextColor="{StaticResource TextSecondary}"/>
+                                </VerticalStackLayout>
+                                <Switch Grid.Column="2"
+                                        x:Name="DarkModeSwitch"
+                                        OnColor="{StaticResource Primary}"
+                                        VerticalOptions="Center"
+                                        Toggled="OnDarkModeToggled"/>
+                            </Grid>
+
+                            <BoxView HeightRequest="1" Color="{StaticResource Divider}" Margin="18,0"/>
+
+                            <!-- Font Size Row -->
+                            <VerticalStackLayout Padding="18,16" Spacing="12">
+                                <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="14">
+                                    <Frame Grid.Column="0"
+                                           BackgroundColor="#E8F5E9"
+                                           CornerRadius="10"
+                                           Padding="10"
+                                           HasShadow="False"
+                                           WidthRequest="42"
+                                           HeightRequest="42">
+                                        <Label Text="&#x1F524;"
+                                               FontSize="18"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </Frame>
+                                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                        <Label Text="Font Size"
+                                               FontSize="15"
+                                               FontAttributes="Bold"
+                                               TextColor="{StaticResource TextPrimary}"/>
+                                        <Label Text="Adjust text size for readability"
+                                               FontSize="12"
+                                               TextColor="{StaticResource TextSecondary}"/>
+                                    </VerticalStackLayout>
+                                    <Frame Grid.Column="2"
+                                           BackgroundColor="{StaticResource TagOrange}"
+                                           CornerRadius="10"
+                                           Padding="10,6"
+                                           HasShadow="False"
+                                           VerticalOptions="Center">
+                                        <Label x:Name="FontSizeLabel"
+                                               Text="16px"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="{StaticResource TagOrangeText}"/>
+                                    </Frame>
+                                </Grid>
+                                <Slider x:Name="FontSizeSlider"
+                                        Minimum="12"
+                                        Maximum="24"
+                                        Value="16"
+                                        MinimumTrackColor="{StaticResource Primary}"
+                                        MaximumTrackColor="{StaticResource Divider}"
+                                        ThumbColor="{StaticResource Primary}"
+                                        ValueChanged="OnFontSizeChanged"
+                                        Margin="0,0,0,0"/>
+                                <Grid ColumnDefinitions="Auto, *, Auto">
+                                    <Label Grid.Column="0" Text="Small" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
+                                    <Label Grid.Column="2" Text="Large" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
                 </VerticalStackLayout>
-            </Frame>
 
-            <!-- About Section -->
-            <Label Text="About"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   TextColor="{StaticResource TextPrimary}"/>
+                <!-- Notifications Section -->
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Notifications"
+                           Style="{StaticResource SectionHeader}"/>
 
-            <Frame BackgroundColor="{StaticResource Surface}"
-                   CornerRadius="16"
-                   Padding="16"
-                   BorderColor="#E0E0E0"
-                   HasShadow="True">
-                <VerticalStackLayout Spacing="8">
-                    <Label Text="Food Explorer"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           TextColor="{StaticResource TextPrimary}"/>
-                    <Label Text="Version 1.0.0"
-                           FontSize="14"
-                           TextColor="{StaticResource TextSecondary}"/>
-                    <Label Text="A mobile app for discovering recipes and restaurants."
-                           FontSize="14"
-                           TextColor="{StaticResource TextSecondary}"/>
+                    <Frame Style="{StaticResource Card}" Padding="0">
+                        <VerticalStackLayout>
+                            <!-- Push Notifications -->
+                            <Grid ColumnDefinitions="Auto, *, Auto"
+                                  Padding="18,16"
+                                  ColumnSpacing="14">
+                                <Frame Grid.Column="0"
+                                       BackgroundColor="{StaticResource TagOrange}"
+                                       CornerRadius="10"
+                                       Padding="10"
+                                       HasShadow="False"
+                                       WidthRequest="42"
+                                       HeightRequest="42">
+                                    <Label Text="&#x1F514;"
+                                           FontSize="18"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Push Notifications"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimary}"/>
+                                    <Label Text="Get new recipe alerts"
+                                           FontSize="12"
+                                           TextColor="{StaticResource TextSecondary}"/>
+                                </VerticalStackLayout>
+                                <Switch Grid.Column="2"
+                                        IsToggled="True"
+                                        OnColor="{StaticResource Primary}"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+
+                            <BoxView HeightRequest="1" Color="{StaticResource Divider}" Margin="18,0"/>
+
+                            <!-- Email Notifications -->
+                            <Grid ColumnDefinitions="Auto, *, Auto"
+                                  Padding="18,16"
+                                  ColumnSpacing="14">
+                                <Frame Grid.Column="0"
+                                       BackgroundColor="{StaticResource TagBlue}"
+                                       CornerRadius="10"
+                                       Padding="10"
+                                       HasShadow="False"
+                                       WidthRequest="42"
+                                       HeightRequest="42">
+                                    <Label Text="&#x2709;"
+                                           FontSize="18"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                    <Label Text="Email Notifications"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimary}"/>
+                                    <Label Text="Weekly digest of top recipes"
+                                           FontSize="12"
+                                           TextColor="{StaticResource TextSecondary}"/>
+                                </VerticalStackLayout>
+                                <Switch Grid.Column="2"
+                                        IsToggled="False"
+                                        OnColor="{StaticResource Primary}"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
                 </VerticalStackLayout>
-            </Frame>
 
+                <!-- About Section -->
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="About"
+                           Style="{StaticResource SectionHeader}"/>
+
+                    <Frame Style="{StaticResource Card}" Padding="0">
+                        <VerticalStackLayout>
+                            <!-- App Info -->
+                            <Grid ColumnDefinitions="Auto, *"
+                                  Padding="18,16"
+                                  ColumnSpacing="14">
+                                <Frame Grid.Column="0"
+                                       BackgroundColor="{StaticResource TagOrange}"
+                                       CornerRadius="14"
+                                       Padding="12"
+                                       HasShadow="False"
+                                       WidthRequest="52"
+                                       HeightRequest="52">
+                                    <Label Text="FD"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource Primary}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="3">
+                                    <Label Text="Food Explorer"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimary}"/>
+                                    <Label Text="Version 1.0.0"
+                                           FontSize="13"
+                                           TextColor="{StaticResource TextSecondary}"/>
+                                    <Label Text="Discover recipes and restaurants worldwide"
+                                           FontSize="12"
+                                           TextColor="{StaticResource TextSecondary}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <BoxView HeightRequest="1" Color="{StaticResource Divider}" Margin="18,0"/>
+
+                            <!-- Hardware Features Row -->
+                            <VerticalStackLayout Padding="18,16" Spacing="10">
+                                <Label Text="Hardware Features"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource TextPrimary}"/>
+                                <Grid ColumnDefinitions="*, *, *, *" ColumnSpacing="8">
+                                    <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="4">
+                                        <Label Text="&#x1F4F7;" FontSize="20" HorizontalOptions="Center"/>
+                                        <Label Text="Camera" FontSize="10" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="4">
+                                        <Label Text="&#x1F4CD;" FontSize="20" HorizontalOptions="Center"/>
+                                        <Label Text="GPS" FontSize="10" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="4">
+                                        <Label Text="&#x1F514;" FontSize="20" HorizontalOptions="Center"/>
+                                        <Label Text="Vibration" FontSize="10" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" Spacing="4">
+                                        <Label Text="&#x1F5E3;" FontSize="20" HorizontalOptions="Center"/>
+                                        <Label Text="Speech" FontSize="10" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -4,20 +4,72 @@
              x:Class="FoodDrinkMaui.App">
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Color Palette -->
             <Color x:Key="Primary">#FF6B35</Color>
+            <Color x:Key="PrimaryDark">#E05520</Color>
             <Color x:Key="Secondary">#2E4057</Color>
             <Color x:Key="Accent">#4CAF50</Color>
-            <Color x:Key="Background">#FAFAFA</Color>
+            <Color x:Key="Background">#F5F5F5</Color>
             <Color x:Key="Surface">#FFFFFF</Color>
             <Color x:Key="TextPrimary">#1A1A1A</Color>
-            <Color x:Key="TextSecondary">#666666</Color>
+            <Color x:Key="TextSecondary">#757575</Color>
+            <Color x:Key="Divider">#EEEEEE</Color>
+            <Color x:Key="CardShadow">#E0E0E0</Color>
+            <Color x:Key="TagGreen">#E8F5E9</Color>
+            <Color x:Key="TagGreenText">#2E7D32</Color>
+            <Color x:Key="TagOrange">#FFF3E0</Color>
+            <Color x:Key="TagOrangeText">#E65100</Color>
+            <Color x:Key="TagBlue">#E3F2FD</Color>
+            <Color x:Key="TagBlueText">#1565C0</Color>
+            <Color x:Key="TagPink">#FCE4EC</Color>
+            <Color x:Key="TagPinkText">#C2185B</Color>
 
+            <!-- Primary Button -->
             <Style TargetType="Button" x:Key="PrimaryButton">
                 <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="CornerRadius" Value="12"/>
-                <Setter Property="Padding" Value="20,14"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="CornerRadius" Value="14"/>
+                <Setter Property="Padding" Value="24,14"/>
+            </Style>
+
+            <!-- Secondary Button -->
+            <Style TargetType="Button" x:Key="SecondaryButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource Secondary}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="CornerRadius" Value="14"/>
+                <Setter Property="Padding" Value="24,14"/>
+            </Style>
+
+            <!-- Outline Button -->
+            <Style TargetType="Button" x:Key="OutlineButton">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                <Setter Property="BorderColor" Value="{StaticResource Primary}"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="CornerRadius" Value="14"/>
+                <Setter Property="Padding" Value="24,14"/>
+            </Style>
+
+            <!-- Section Header -->
+            <Style TargetType="Label" x:Key="SectionHeader">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+            </Style>
+
+            <!-- Card Frame -->
+            <Style TargetType="Frame" x:Key="Card">
+                <Setter Property="BackgroundColor" Value="{StaticResource Surface}"/>
+                <Setter Property="CornerRadius" Value="18"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BorderColor" Value="{StaticResource Divider}"/>
+                <Setter Property="HasShadow" Value="True"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

@@ -3,208 +3,473 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDrinkMaui.MainPage"
              BackgroundColor="{StaticResource Background}"
-             Title="Food Explorer">
+             Shell.NavBarIsVisible="False">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Spacing="0">
 
-            <!-- Header -->
-            <VerticalStackLayout Spacing="4">
-                <Label Text="Welcome to"
-                       FontSize="16"
-                       TextColor="{StaticResource TextSecondary}"/>
-                <Label Text="Food Explorer"
-                       FontSize="32"
-                       FontAttributes="Bold"
-                       TextColor="{StaticResource TextPrimary}"/>
-                <Label Text="Discover delicious recipes and restaurants"
-                       FontSize="14"
-                       TextColor="{StaticResource TextSecondary}"/>
-            </VerticalStackLayout>
+            <!-- ===== HERO HEADER ===== -->
+            <Frame BackgroundColor="{StaticResource Primary}"
+                   CornerRadius="0"
+                   Padding="24,48,24,32"
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="20">
 
-            <!-- Search Box -->
-            <Frame BackgroundColor="{StaticResource Surface}"
-                   CornerRadius="12"
-                   Padding="4"
-                   BorderColor="#E0E0E0"
-                   HasShadow="True">
-                <Grid ColumnDefinitions="*, Auto">
-                    <Entry x:Name="SearchEntry"
-                           Placeholder="Search recipes..."
-                           FontSize="16"
-                           VerticalOptions="Center"/>
-                    <Button Grid.Column="1"
-                            Text="Search"
-                            Style="{StaticResource PrimaryButton}"
-                            Clicked="OnSearchClicked"/>
-                </Grid>
-            </Frame>
-
-            <!-- Feature Grid -->
-            <Label Text="Explore Features"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   TextColor="{StaticResource TextPrimary}"/>
-
-            <Grid ColumnDefinitions="*, *"
-                  RowDefinitions="Auto, Auto"
-                  ColumnSpacing="16"
-                  RowSpacing="16">
-
-                <!-- Recipes Card -->
-                <Frame Grid.Row="0" Grid.Column="0"
-                       BackgroundColor="{StaticResource Surface}"
-                       CornerRadius="16"
-                       Padding="16"
-                       BorderColor="#E0E0E0"
-                       HasShadow="True">
-                    <VerticalStackLayout Spacing="12">
-                        <Frame BackgroundColor="#FFF3E0"
-                               CornerRadius="12"
+                    <!-- Top Row: Logo + Greeting -->
+                    <Grid ColumnDefinitions="*, Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Good Day!"
+                                   FontSize="14"
+                                   TextColor="#FFCCAA"
+                                   FontAttributes="Bold"/>
+                            <Label Text="Food Explorer"
+                                   FontSize="30"
+                                   FontAttributes="Bold"
+                                   TextColor="White"/>
+                            <Label Text="Discover recipes and restaurants"
+                                   FontSize="13"
+                                   TextColor="#FFFFFF99"/>
+                        </VerticalStackLayout>
+                        <Frame Grid.Column="1"
+                               BackgroundColor="#FFFFFF22"
+                               CornerRadius="20"
                                Padding="12"
                                HasShadow="False"
-                               HorizontalOptions="Start">
-                            <Label Text="Recipe" FontSize="24"/>
+                               VerticalOptions="Center">
+                            <Label Text="FD"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   WidthRequest="36"
+                                   HeightRequest="36"/>
                         </Frame>
-                        <Label Text="Recipes"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               TextColor="{StaticResource TextPrimary}"/>
-                        <Label Text="Browse recipes"
-                               FontSize="12"
-                               TextColor="{StaticResource TextSecondary}"/>
-                    </VerticalStackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnRecipesClicked"/>
-                    </Frame.GestureRecognizers>
-                </Frame>
+                    </Grid>
 
-                <!-- Nearby Card -->
-                <Frame Grid.Row="0" Grid.Column="1"
-                       BackgroundColor="{StaticResource Surface}"
-                       CornerRadius="16"
-                       Padding="16"
-                       BorderColor="#E0E0E0"
-                       HasShadow="True">
-                    <VerticalStackLayout Spacing="12">
-                        <Frame BackgroundColor="#E3F2FD"
-                               CornerRadius="12"
-                               Padding="12"
-                               HasShadow="False"
-                               HorizontalOptions="Start">
-                            <Label Text="Map" FontSize="24"/>
-                        </Frame>
-                        <Label Text="Nearby"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               TextColor="{StaticResource TextPrimary}"/>
-                        <Label Text="Find restaurants"
-                               FontSize="12"
-                               TextColor="{StaticResource TextSecondary}"/>
-                    </VerticalStackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnNearbyClicked"/>
-                    </Frame.GestureRecognizers>
-                </Frame>
-
-                <!-- Scan Card -->
-                <Frame Grid.Row="1" Grid.Column="0"
-                       BackgroundColor="{StaticResource Surface}"
-                       CornerRadius="16"
-                       Padding="16"
-                       BorderColor="#E0E0E0"
-                       HasShadow="True">
-                    <VerticalStackLayout Spacing="12">
-                        <Frame BackgroundColor="#E8F5E9"
-                               CornerRadius="12"
-                               Padding="12"
-                               HasShadow="False"
-                               HorizontalOptions="Start">
-                            <Label Text="Camera" FontSize="24"/>
-                        </Frame>
-                        <Label Text="Scan Food"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               TextColor="{StaticResource TextPrimary}"/>
-                        <Label Text="Identify ingredients"
-                               FontSize="12"
-                               TextColor="{StaticResource TextSecondary}"/>
-                    </VerticalStackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnScanClicked"/>
-                    </Frame.GestureRecognizers>
-                </Frame>
-
-                <!-- Favorites Card -->
-                <Frame Grid.Row="1" Grid.Column="1"
-                       BackgroundColor="{StaticResource Surface}"
-                       CornerRadius="16"
-                       Padding="16"
-                       BorderColor="#E0E0E0"
-                       HasShadow="True">
-                    <VerticalStackLayout Spacing="12">
-                        <Frame BackgroundColor="#FCE4EC"
-                               CornerRadius="12"
-                               Padding="12"
-                               HasShadow="False"
-                               HorizontalOptions="Start">
-                            <Label Text="Heart" FontSize="24"/>
-                        </Frame>
-                        <Label Text="Favorites"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               TextColor="{StaticResource TextPrimary}"/>
-                        <Label Text="Saved recipes"
-                               FontSize="12"
-                               TextColor="{StaticResource TextSecondary}"/>
-                    </VerticalStackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnFavoritesClicked"/>
-                    </Frame.GestureRecognizers>
-                </Frame>
-            </Grid>
-
-            <!-- Featured Recipe -->
-            <Label Text="Featured Recipe"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   TextColor="{StaticResource TextPrimary}"/>
-
-            <Frame BackgroundColor="{StaticResource Surface}"
-                   CornerRadius="16"
-                   Padding="16"
-                   BorderColor="#E0E0E0"
-                   HasShadow="True">
-                <Grid ColumnDefinitions="80, *" ColumnSpacing="16">
-                    <Frame Grid.Column="0"
-                           BackgroundColor="#FFECB3"
-                           CornerRadius="12"
-                           Padding="0"
-                           HasShadow="False"
-                           HeightRequest="80"
-                           WidthRequest="80">
-                        <Label Text="Noodles"
-                               FontSize="32"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center"/>
+                    <!-- Search Bar -->
+                    <Frame BackgroundColor="White"
+                           CornerRadius="16"
+                           Padding="4,4"
+                           HasShadow="False">
+                        <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="4">
+                            <Label Grid.Column="0"
+                                   Text="  Search"
+                                   FontSize="18"
+                                   TextColor="{StaticResource TextSecondary}"
+                                   VerticalOptions="Center"
+                                   Margin="8,0,0,0"/>
+                            <Entry Grid.Column="1"
+                                   x:Name="SearchEntry"
+                                   Placeholder="e.g. pasta, burger, sushi..."
+                                   PlaceholderColor="{StaticResource TextSecondary}"
+                                   FontSize="14"
+                                   TextColor="{StaticResource TextPrimary}"
+                                   VerticalOptions="Center"
+                                   BackgroundColor="Transparent"
+                                   ReturnCommand="{Binding Source={x:Reference SearchEntry}, Path=ReturnCommand}"/>
+                            <Button Grid.Column="2"
+                                    Text="Go"
+                                    Style="{StaticResource PrimaryButton}"
+                                    CornerRadius="12"
+                                    Padding="18,10"
+                                    Clicked="OnSearchClicked"/>
+                        </Grid>
                     </Frame>
-                    <VerticalStackLayout Grid.Column="1"
-                                         VerticalOptions="Center"
-                                         Spacing="4">
-                        <Label Text="Beef Noodle Soup"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               TextColor="{StaticResource TextPrimary}"/>
-                        <Label Text="Cooking time: 45 min"
-                               FontSize="14"
-                               TextColor="{StaticResource TextSecondary}"/>
-                        <Label Text="Rating: 4.9"
-                               FontSize="14"
-                               TextColor="{StaticResource Primary}"/>
-                    </VerticalStackLayout>
-                </Grid>
+
+                    <!-- Stats Row -->
+                    <Grid ColumnDefinitions="*, *, *" ColumnSpacing="0">
+                        <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="1,200+"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Recipes"
+                                   FontSize="11"
+                                   TextColor="#FFFFFF99"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        <BoxView Grid.Column="0" WidthRequest="1" BackgroundColor="#FFFFFF33" HorizontalOptions="End" VerticalOptions="Fill" Margin="0,4"/>
+                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="50+"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Cuisines"
+                                   FontSize="11"
+                                   TextColor="#FFFFFF99"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#FFFFFF33" HorizontalOptions="End" VerticalOptions="Fill" Margin="0,4"/>
+                        <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="4.9"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Rating"
+                                   FontSize="11"
+                                   TextColor="#FFFFFF99"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                </VerticalStackLayout>
             </Frame>
 
+            <!-- ===== MAIN CONTENT ===== -->
+            <VerticalStackLayout Padding="20,24" Spacing="28">
+
+                <!-- Quick Actions -->
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="What are you looking for?"
+                           Style="{StaticResource SectionHeader}"/>
+
+                    <Grid ColumnDefinitions="*, *"
+                          RowDefinitions="Auto, Auto"
+                          ColumnSpacing="14"
+                          RowSpacing="14">
+
+                        <!-- Scan Food -->
+                        <Frame Grid.Row="0" Grid.Column="0"
+                               BackgroundColor="{StaticResource TagGreen}"
+                               CornerRadius="20"
+                               Padding="16,20"
+                               HasShadow="False"
+                               HeightRequest="150">
+                            <VerticalStackLayout Spacing="10" VerticalOptions="Center">
+                                <Frame BackgroundColor="#4CAF50"
+                                       CornerRadius="14"
+                                       Padding="10"
+                                       HasShadow="False"
+                                       WidthRequest="52"
+                                       HeightRequest="52"
+                                       HorizontalOptions="Start">
+                                    <Label Text="&#x1F4F7;"
+                                           FontSize="24"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <Label Text="Scan Food"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource TagGreenText}"/>
+                                <Label Text="Photo identify ingredients"
+                                       FontSize="11"
+                                       TextColor="#558B2F"
+                                       LineBreakMode="WordWrap"/>
+                            </VerticalStackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnScanClicked"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                        <!-- Find Nearby -->
+                        <Frame Grid.Row="0" Grid.Column="1"
+                               BackgroundColor="{StaticResource TagBlue}"
+                               CornerRadius="20"
+                               Padding="16,20"
+                               HasShadow="False"
+                               HeightRequest="150">
+                            <VerticalStackLayout Spacing="10" VerticalOptions="Center">
+                                <Frame BackgroundColor="#2196F3"
+                                       CornerRadius="14"
+                                       Padding="10"
+                                       HasShadow="False"
+                                       WidthRequest="52"
+                                       HeightRequest="52"
+                                       HorizontalOptions="Start">
+                                    <Label Text="&#x1F4CD;"
+                                           FontSize="24"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <Label Text="Nearby"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource TagBlueText}"/>
+                                <Label Text="Find restaurants near you"
+                                       FontSize="11"
+                                       TextColor="#1976D2"
+                                       LineBreakMode="WordWrap"/>
+                            </VerticalStackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnNearbyClicked"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                        <!-- Recipes -->
+                        <Frame Grid.Row="1" Grid.Column="0"
+                               BackgroundColor="{StaticResource TagOrange}"
+                               CornerRadius="20"
+                               Padding="16,20"
+                               HasShadow="False"
+                               HeightRequest="150">
+                            <VerticalStackLayout Spacing="10" VerticalOptions="Center">
+                                <Frame BackgroundColor="{StaticResource Primary}"
+                                       CornerRadius="14"
+                                       Padding="10"
+                                       HasShadow="False"
+                                       WidthRequest="52"
+                                       HeightRequest="52"
+                                       HorizontalOptions="Start">
+                                    <Label Text="&#x1F4D6;"
+                                           FontSize="24"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <Label Text="Recipes"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource TagOrangeText}"/>
+                                <Label Text="Browse 1200+ recipes"
+                                       FontSize="11"
+                                       TextColor="#F57C00"
+                                       LineBreakMode="WordWrap"/>
+                            </VerticalStackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnRecipesClicked"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                        <!-- Favorites -->
+                        <Frame Grid.Row="1" Grid.Column="1"
+                               BackgroundColor="{StaticResource TagPink}"
+                               CornerRadius="20"
+                               Padding="16,20"
+                               HasShadow="False"
+                               HeightRequest="150">
+                            <VerticalStackLayout Spacing="10" VerticalOptions="Center">
+                                <Frame BackgroundColor="#E91E63"
+                                       CornerRadius="14"
+                                       Padding="10"
+                                       HasShadow="False"
+                                       WidthRequest="52"
+                                       HeightRequest="52"
+                                       HorizontalOptions="Start">
+                                    <Label Text="&#x2764;"
+                                           FontSize="24"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <Label Text="Favorites"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource TagPinkText}"/>
+                                <Label Text="Your saved recipes"
+                                       FontSize="11"
+                                       TextColor="#D81B60"
+                                       LineBreakMode="WordWrap"/>
+                            </VerticalStackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFavoritesClicked"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!-- Today's Featured Recipe -->
+                <VerticalStackLayout Spacing="14">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Grid.Column="0"
+                               Text="Today's Featured"
+                               Style="{StaticResource SectionHeader}"/>
+                        <Label Grid.Column="1"
+                               Text="See all >"
+                               FontSize="14"
+                               TextColor="{StaticResource Primary}"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Big Feature Card -->
+                    <Frame Style="{StaticResource Card}">
+                        <Grid RowDefinitions="180, Auto">
+                            <!-- Image Area -->
+                            <Frame Grid.Row="0"
+                                   BackgroundColor="#FFF3E0"
+                                   CornerRadius="18,18,0,0"
+                                   Padding="0"
+                                   HasShadow="False">
+                                <Grid>
+                                    <Label Text="&#x1F35C;"
+                                           FontSize="80"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                    <!-- Badge -->
+                                    <Frame BackgroundColor="{StaticResource Primary}"
+                                           CornerRadius="10"
+                                           Padding="10,5"
+                                           HasShadow="False"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           Margin="12,12,0,0">
+                                        <Label Text="TRENDING"
+                                               FontSize="10"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                    </Frame>
+                                    <!-- Time Badge -->
+                                    <Frame BackgroundColor="#00000066"
+                                           CornerRadius="10"
+                                           Padding="10,5"
+                                           HasShadow="False"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="End"
+                                           Margin="0,0,12,12">
+                                        <Label Text="45 min"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                    </Frame>
+                                </Grid>
+                            </Frame>
+
+                            <!-- Info Area -->
+                            <VerticalStackLayout Grid.Row="1" Padding="16,14" Spacing="10">
+                                <Label Text="Classic Beef Noodle Soup"
+                                       FontSize="19"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource TextPrimary}"/>
+
+                                <Grid ColumnDefinitions="Auto, *, Auto">
+                                    <HorizontalStackLayout Grid.Column="0" Spacing="4">
+                                        <Label Text="&#x2B50;" FontSize="13" TextColor="#FFC107"/>
+                                        <Label Text="4.9" FontSize="13" TextColor="{StaticResource TextSecondary}" FontAttributes="Bold"/>
+                                        <Label Text="(2.3k)" FontSize="13" TextColor="{StaticResource TextSecondary}"/>
+                                    </HorizontalStackLayout>
+                                    <Label Grid.Column="2"
+                                           Text="VIEW RECIPE >"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource Primary}"/>
+                                </Grid>
+
+                                <HorizontalStackLayout Spacing="8">
+                                    <Frame BackgroundColor="{StaticResource TagGreen}" CornerRadius="8" Padding="10,4" HasShadow="False">
+                                        <Label Text="Easy" FontSize="11" TextColor="{StaticResource TagGreenText}" FontAttributes="Bold"/>
+                                    </Frame>
+                                    <Frame BackgroundColor="{StaticResource TagOrange}" CornerRadius="8" Padding="10,4" HasShadow="False">
+                                        <Label Text="Asian" FontSize="11" TextColor="{StaticResource TagOrangeText}" FontAttributes="Bold"/>
+                                    </Frame>
+                                    <Frame BackgroundColor="{StaticResource TagPink}" CornerRadius="8" Padding="10,4" HasShadow="False">
+                                        <Label Text="Comfort Food" FontSize="11" TextColor="{StaticResource TagPinkText}" FontAttributes="Bold"/>
+                                    </Frame>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnFeaturedRecipeClicked"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Quick Picks Scroll Row -->
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Quick Picks"
+                           Style="{StaticResource SectionHeader}"/>
+
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <HorizontalStackLayout Spacing="12" Padding="2,4">
+
+                            <!-- Burger -->
+                            <Frame Style="{StaticResource Card}" WidthRequest="130">
+                                <VerticalStackLayout>
+                                    <Frame BackgroundColor="#FFECB3"
+                                           CornerRadius="18,18,0,0"
+                                           Padding="0"
+                                           HeightRequest="90"
+                                           HasShadow="False">
+                                        <Label Text="&#x1F354;" FontSize="44"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                    <VerticalStackLayout Padding="12,10" Spacing="2">
+                                        <Label Text="Burger" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
+                                        <Label Text="20 min  &#x2B50; 4.7" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                            <!-- Salad -->
+                            <Frame Style="{StaticResource Card}" WidthRequest="130">
+                                <VerticalStackLayout>
+                                    <Frame BackgroundColor="#C8E6C9"
+                                           CornerRadius="18,18,0,0"
+                                           Padding="0"
+                                           HeightRequest="90"
+                                           HasShadow="False">
+                                        <Label Text="&#x1F957;" FontSize="44"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                    <VerticalStackLayout Padding="12,10" Spacing="2">
+                                        <Label Text="Salad" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
+                                        <Label Text="10 min  &#x2B50; 4.6" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                            <!-- Pizza -->
+                            <Frame Style="{StaticResource Card}" WidthRequest="130">
+                                <VerticalStackLayout>
+                                    <Frame BackgroundColor="#FFCDD2"
+                                           CornerRadius="18,18,0,0"
+                                           Padding="0"
+                                           HeightRequest="90"
+                                           HasShadow="False">
+                                        <Label Text="&#x1F355;" FontSize="44"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                    <VerticalStackLayout Padding="12,10" Spacing="2">
+                                        <Label Text="Pizza" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
+                                        <Label Text="30 min  &#x2B50; 4.8" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                            <!-- Sushi -->
+                            <Frame Style="{StaticResource Card}" WidthRequest="130">
+                                <VerticalStackLayout>
+                                    <Frame BackgroundColor="#E1F5FE"
+                                           CornerRadius="18,18,0,0"
+                                           Padding="0"
+                                           HeightRequest="90"
+                                           HasShadow="False">
+                                        <Label Text="&#x1F363;" FontSize="44"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                    <VerticalStackLayout Padding="12,10" Spacing="2">
+                                        <Label Text="Sushi" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
+                                        <Label Text="25 min  &#x2B50; 4.9" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                            <!-- Cake -->
+                            <Frame Style="{StaticResource Card}" WidthRequest="130">
+                                <VerticalStackLayout>
+                                    <Frame BackgroundColor="#F3E5F5"
+                                           CornerRadius="18,18,0,0"
+                                           Padding="0"
+                                           HeightRequest="90"
+                                           HasShadow="False">
+                                        <Label Text="&#x1F370;" FontSize="44"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                    <VerticalStackLayout Padding="12,10" Spacing="2">
+                                        <Label Text="Dessert" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
+                                        <Label Text="50 min  &#x2B50; 4.5" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                        </HorizontalStackLayout>
+                    </ScrollView>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
