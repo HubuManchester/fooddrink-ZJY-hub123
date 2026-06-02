@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkMaui.Pages.LocationPage"
+             BackgroundColor="{StaticResource Background}"
+             Title="Nearby Restaurants">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Location Card -->
+            <Frame BackgroundColor="{StaticResource Surface}"
+                   CornerRadius="16"
+                   Padding="20"
+                   BorderColor="#E0E0E0"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Your Location"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}"/>
+                    <Label x:Name="LocationLabel"
+                           Text="Tap button to get location"
+                           FontSize="14"
+                           TextColor="{StaticResource TextSecondary}"/>
+                    <Button Text="Get My Location"
+                            Style="{StaticResource PrimaryButton}"
+                            Clicked="OnGetLocationClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Nearby Restaurants -->
+            <Label Text="Nearby Restaurants"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"/>
+
+            <!-- Restaurant 1 -->
+            <Frame BackgroundColor="{StaticResource Surface}"
+                   CornerRadius="16"
+                   Padding="16"
+                   BorderColor="#E0E0E0"
+                   HasShadow="True">
+                <Grid ColumnDefinitions="60, *" ColumnSpacing="16">
+                    <Frame Grid.Column="0"
+                           BackgroundColor="#FFECB3"
+                           CornerRadius="12"
+                           Padding="0"
+                           HasShadow="False"
+                           HeightRequest="60"
+                           WidthRequest="60">
+                        <Label Text="1"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Frame>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                        <Label Text="Golden Dragon Restaurant"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+                        <Label Text="Chinese Cuisine - 0.5 km"
+                               FontSize="14"
+                               TextColor="{StaticResource TextSecondary}"/>
+                        <Label Text="Rating: 4.5"
+                               FontSize="14"
+                               TextColor="{StaticResource Primary}"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Restaurant 2 -->
+            <Frame BackgroundColor="{StaticResource Surface}"
+                   CornerRadius="16"
+                   Padding="16"
+                   BorderColor="#E0E0E0"
+                   HasShadow="True">
+                <Grid ColumnDefinitions="60, *" ColumnSpacing="16">
+                    <Frame Grid.Column="0"
+                           BackgroundColor="#E3F2FD"
+                           CornerRadius="12"
+                           Padding="0"
+                           HasShadow="False"
+                           HeightRequest="60"
+                           WidthRequest="60">
+                        <Label Text="2"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Frame>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                        <Label Text="Sakura Sushi Bar"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+                        <Label Text="Japanese Cuisine - 0.8 km"
+                               FontSize="14"
+                               TextColor="{StaticResource TextSecondary}"/>
+                        <Label Text="Rating: 4.8"
+                               FontSize="14"
+                               TextColor="{StaticResource Primary}"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Restaurant 3 -->
+            <Frame BackgroundColor="{StaticResource Surface}"
+                   CornerRadius="16"
+                   Padding="16"
+                   BorderColor="#E0E0E0"
+                   HasShadow="True">
+                <Grid ColumnDefinitions="60, *" ColumnSpacing="16">
+                    <Frame Grid.Column="0"
+                           BackgroundColor="#E8F5E9"
+                           CornerRadius="12"
+                           Padding="0"
+                           HasShadow="False"
+                           HeightRequest="60"
+                           WidthRequest="60">
+                        <Label Text="3"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Frame>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                        <Label Text="Pizza Paradise"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+                        <Label Text="Italian Cuisine - 1.2 km"
+                               FontSize="14"
+                               TextColor="{StaticResource TextSecondary}"/>
+                        <Label Text="Rating: 4.3"
+                               FontSize="14"
+                               TextColor="{StaticResource Primary}"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

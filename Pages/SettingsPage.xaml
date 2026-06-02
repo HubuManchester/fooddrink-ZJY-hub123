@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkMaui.Pages.SettingsPage"
+             BackgroundColor="{StaticResource Background}"
+             Title="Settings">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <!-- Appearance Section -->
+            <Label Text="Appearance"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"/>
+
+            <Frame BackgroundColor="{StaticResource Surface}"
+                   CornerRadius="16"
+                   Padding="16"
+                   BorderColor="#E0E0E0"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="16">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Text="Dark Mode"
+                               FontSize="16"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource TextPrimary}"/>
+                        <Switch Grid.Column="1"
+                                x:Name="DarkModeSwitch"
+                                Toggled="OnDarkModeToggled"/>
+                    </Grid>
+                    <BoxView HeightRequest="1" Color="#E0E0E0"/>
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Font Size"
+                               FontSize="16"
+                               TextColor="{StaticResource TextPrimary}"/>
+                        <Slider x:Name="FontSizeSlider"
+                                Minimum="12"
+                                Maximum="24"
+                                Value="16"
+                                ValueChanged="OnFontSizeChanged"/>
+                        <Label x:Name="FontSizeLabel"
+                               Text="16"
+                               FontSize="14"
+                               TextColor="{StaticResource TextSecondary}"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Notifications Section -->
+            <Label Text="Notifications"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"/>
+
+            <Frame BackgroundColor="{StaticResource Surface}"
+                   CornerRadius="16"
+                   Padding="16"
+                   BorderColor="#E0E0E0"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="16">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Text="Push Notifications"
+                               FontSize="16"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource TextPrimary}"/>
+                        <Switch Grid.Column="1" IsToggled="True"/>
+                    </Grid>
+                    <BoxView HeightRequest="1" Color="#E0E0E0"/>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Text="Email Notifications"
+                               FontSize="16"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource TextPrimary}"/>
+                        <Switch Grid.Column="1" IsToggled="False"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- About Section -->
+            <Label Text="About"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"/>
+
+            <Frame BackgroundColor="{StaticResource Surface}"
+                   CornerRadius="16"
+                   Padding="16"
+                   BorderColor="#E0E0E0"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Food Explorer"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}"/>
+                    <Label Text="Version 1.0.0"
+                           FontSize="14"
+                           TextColor="{StaticResource TextSecondary}"/>
+                    <Label Text="A mobile app for discovering recipes and restaurants."
+                           FontSize="14"
+                           TextColor="{StaticResource TextSecondary}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
