@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkMaui.Pages.LocationDetailPage"
+             BackgroundColor="{StaticResource Background}"
+             Title="Your Location">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <!-- Header Banner with Map Background -->
+            <Frame BackgroundColor="#1565C0"
+                   CornerRadius="0"
+                   Padding="24,36,24,28"
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Your Location"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                    <Label x:Name="AddressLabel"
+                           Text="Detecting your location..."
+                           FontSize="14"
+                           TextColor="#FFFFFFCC"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <VerticalStackLayout Padding="20,24" Spacing="20">
+
+                <!-- Location Card -->
+                <Frame BackgroundColor="{StaticResource Surface}"
+                       CornerRadius="18"
+                       Padding="20"
+                       HasShadow="True"
+                       BorderColor="{StaticResource Divider}">
+                    <VerticalStackLayout Spacing="16">
+                        <!-- Map Placeholder -->
+                        <Frame BackgroundColor="#E3F2FD"
+                               CornerRadius="14"
+                               Padding="0"
+                               HeightRequest="180"
+                               HasShadow="False">
+                            <Grid>
+                                <Label Text="&#x1F5FA;"
+                                       FontSize="60"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                                <!-- Location Pin -->
+                                <Frame BackgroundColor="#E53935"
+                                       CornerRadius="20"
+                                       Padding="8"
+                                       HasShadow="True"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Margin="0,0,0,40">
+                                    <Label Text="&#x1F4CD;"
+                                           FontSize="20"
+                                           HorizontalOptions="Center"/>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+
+                        <!-- Coordinates -->
+                        <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="{StaticResource TagBlue}"
+                                   CornerRadius="12"
+                                   Padding="14"
+                                   HasShadow="False">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="Latitude"
+                                           FontSize="11"
+                                           TextColor="#1565C0"/>
+                                    <Label x:Name="LatitudeLabel"
+                                           Text="--"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="#0D47A1"/>
+                                </VerticalStackLayout>
+                            </Frame>
+                            <Frame Grid.Column="1"
+                                   BackgroundColor="{StaticResource TagGreen}"
+                                   CornerRadius="12"
+                                   Padding="14"
+                                   HasShadow="False">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="Longitude"
+                                           FontSize="11"
+                                           TextColor="#2E7D32"/>
+                                    <Label x:Name="LongitudeLabel"
+                                           Text="--"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="#1B5E20"/>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+
+                        <!-- Accuracy & Altitude -->
+                        <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="{StaticResource TagOrange}"
+                                   CornerRadius="12"
+                                   Padding="14"
+                                   HasShadow="False">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="Accuracy"
+                                           FontSize="11"
+                                           TextColor="#E65100"/>
+                                    <Label x:Name="AccuracyLabel"
+                                           Text="--"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="#BF360C"/>
+                                </VerticalStackLayout>
+                            </Frame>
+                            <Frame Grid.Column="1"
+                                   BackgroundColor="#F3E5F5"
+                                   CornerRadius="12"
+                                   Padding="14"
+                                   HasShadow="False">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="Altitude"
+                                           FontSize="11"
+                                           TextColor="#7B1FA2"/>
+                                    <Label x:Name="AltitudeLabel"
+                                           Text="--"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="#4A148C"/>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Actions -->
+                <Label Text="Quick Actions"
+                       Style="{StaticResource SectionHeader}"/>
+
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="12" RowDefinitions="Auto, Auto" RowSpacing="12">
+                    <Frame Grid.Column="0" Grid.Row="0"
+                           Style="{StaticResource Card}"
+                           Padding="16">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnRefreshClicked"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                            <Label Text="&#x1F504;" FontSize="28" HorizontalOptions="Center"/>
+                            <Label Text="Refresh" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.Row="0"
+                           Style="{StaticResource Card}"
+                           Padding="16">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShareClicked"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                            <Label Text="&#x1F4E4;" FontSize="28" HorizontalOptions="Center"/>
+                            <Label Text="Share" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="0" Grid.Row="1"
+                           Style="{StaticResource Card}"
+                           Padding="16">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOpenMapsClicked"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                            <Label Text="&#x1F5FA;" FontSize="28" HorizontalOptions="Center"/>
+                            <Label Text="Open in Maps" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.Row="1"
+                           Style="{StaticResource Card}"
+                           Padding="16">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnFindRestaurantsClicked"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                            <Label Text="&#x1F37D;" FontSize="28" HorizontalOptions="Center"/>
+                            <Label Text="Restaurants" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- Timestamp -->
+                <Frame BackgroundColor="{StaticResource Surface}"
+                       CornerRadius="12"
+                       Padding="16"
+                       HasShadow="False"
+                       BorderColor="{StaticResource Divider}">
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text="&#x1F552;" FontSize="16"/>
+                        <Label x:Name="TimestampLabel"
+                               Text="Last updated: --"
+                               FontSize="13"
+                               TextColor="{StaticResource TextSecondary}"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

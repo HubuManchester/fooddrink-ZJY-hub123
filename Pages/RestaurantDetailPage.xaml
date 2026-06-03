@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkMaui.Pages.RestaurantDetailPage"
+             BackgroundColor="{StaticResource Background}"
+             Title="Restaurant">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <!-- Restaurant Image Header -->
+            <Frame x:Name="HeaderFrame"
+                   BackgroundColor="#FFECB3"
+                   CornerRadius="0"
+                   Padding="0"
+                   HeightRequest="200"
+                   HasShadow="False">
+                <Grid>
+                    <Label x:Name="RestaurantEmoji"
+                           Text="&#x1F3E0;"
+                           FontSize="80"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    <!-- Status Badge -->
+                    <Frame x:Name="StatusBadge"
+                           BackgroundColor="{StaticResource TagGreen}"
+                           CornerRadius="12"
+                           Padding="12,8"
+                           HasShadow="False"
+                           HorizontalOptions="End"
+                           VerticalOptions="End"
+                           Margin="16">
+                        <Label x:Name="StatusLabel" Text="Open Now" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TagGreenText}"/>
+                    </Frame>
+                </Grid>
+            </Frame>
+
+            <VerticalStackLayout Padding="20,24" Spacing="20">
+
+                <!-- Restaurant Name & Info -->
+                <VerticalStackLayout Spacing="12">
+                    <Label x:Name="RestaurantName"
+                           Text="Golden Dragon Restaurant"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}"/>
+
+                    <Label x:Name="CuisineLabel"
+                           Text="Chinese Cuisine"
+                           FontSize="15"
+                           TextColor="{StaticResource TextSecondary}"/>
+
+                    <HorizontalStackLayout Spacing="20">
+                        <HorizontalStackLayout Spacing="6">
+                            <Label Text="&#x2B50;" FontSize="16"/>
+                            <Label x:Name="RatingLabel" Text="4.5" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource Primary}"/>
+                            <Label Text="(128 reviews)" FontSize="13" TextColor="{StaticResource TextSecondary}"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="6">
+                            <Label Text="&#x1F4CD;" FontSize="16"/>
+                            <Label x:Name="DistanceLabel" Text="0.5 km away" FontSize="14" TextColor="{StaticResource TextSecondary}"/>
+                        </HorizontalStackLayout>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- Info Cards -->
+                <Grid ColumnDefinitions="*, *, *" ColumnSpacing="12">
+                    <Frame Grid.Column="0" BackgroundColor="{StaticResource TagBlue}" CornerRadius="12" Padding="12" HasShadow="False">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="&#x23F0;" FontSize="24" HorizontalOptions="Center"/>
+                            <Label Text="Hours" FontSize="11" TextColor="{StaticResource TagBlueText}" HorizontalOptions="Center"/>
+                            <Label Text="10AM-10PM" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TagBlueText}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" BackgroundColor="{StaticResource TagGreen}" CornerRadius="12" Padding="12" HasShadow="False">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="&#x1F4B0;" FontSize="24" HorizontalOptions="Center"/>
+                            <Label Text="Price" FontSize="11" TextColor="{StaticResource TagGreenText}" HorizontalOptions="Center"/>
+                            <Label Text="$$" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TagGreenText}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="2" BackgroundColor="{StaticResource TagOrange}" CornerRadius="12" Padding="12" HasShadow="False">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="&#x1F6B4;" FontSize="24" HorizontalOptions="Center"/>
+                            <Label Text="Delivery" FontSize="11" TextColor="{StaticResource TagOrangeText}" HorizontalOptions="Center"/>
+                            <Label Text="Yes" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TagOrangeText}" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- Popular Dishes -->
+                <Frame BackgroundColor="{StaticResource Surface}"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="16">
+                        <Label Text="Popular Dishes"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+
+                        <Grid ColumnDefinitions="60, *, Auto" RowDefinitions="Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="12">
+                            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#FFECB3" CornerRadius="10" Padding="0" HeightRequest="50" HasShadow="False">
+                                <Label Text="&#x1F35C;" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="Beef Noodle Soup" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
+                                <Label Text="Best seller" FontSize="12" TextColor="{StaticResource Accent}"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Row="0" Grid.Column="2" Text="$12.99" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource Primary}" VerticalOptions="Center"/>
+
+                            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#FFCCBC" CornerRadius="10" Padding="0" HeightRequest="50" HasShadow="False">
+                                <Label Text="&#x1F969;" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                            <VerticalStackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="Kung Pao Chicken" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
+                                <Label Text="Spicy" FontSize="12" TextColor="#E53935"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Row="1" Grid.Column="2" Text="$14.99" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource Primary}" VerticalOptions="Center"/>
+
+                            <Frame Grid.Row="2" Grid.Column="0" BackgroundColor="#C8E6C9" CornerRadius="10" Padding="0" HeightRequest="50" HasShadow="False">
+                                <Label Text="&#x1F96F;" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                            <VerticalStackLayout Grid.Row="2" Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="Fried Rice" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
+                                <Label Text="Vegetarian option" FontSize="12" TextColor="{StaticResource Accent}"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Row="2" Grid.Column="2" Text="$10.99" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource Primary}" VerticalOptions="Center"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Address & Contact -->
+                <Frame BackgroundColor="{StaticResource Surface}"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="16">
+                        <Label Text="Contact Information"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+
+                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto" RowSpacing="12" ColumnSpacing="12">
+                            <Label Grid.Row="0" Grid.Column="0" Text="&#x1F4CD;" FontSize="20"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="123 Food Street, City Center" FontSize="14" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="&#x1F4DE;" FontSize="20"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="+1 234 567 8900" FontSize="14" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Action Buttons -->
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                    <Button Grid.Column="0"
+                            Text="Call Now"
+                            Style="{StaticResource SecondaryButton}"
+                            Clicked="OnCallClicked"
+                            AutomationId="CallNowBtn"
+                            SemanticProperties.Description="Call the restaurant"/>
+                    <Button Grid.Column="1"
+                            Text="Get Directions"
+                            Style="{StaticResource PrimaryButton}"
+                            Clicked="OnDirectionsClicked"
+                            AutomationId="GetDirectionsBtn"
+                            SemanticProperties.Description="Open maps for driving directions"/>
+                </Grid>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

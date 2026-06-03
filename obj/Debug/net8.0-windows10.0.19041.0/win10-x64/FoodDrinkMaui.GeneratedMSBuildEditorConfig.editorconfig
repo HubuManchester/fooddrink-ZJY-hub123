@@ -46,11 +46,41 @@ build_metadata.AdditionalFiles.ManifestResourceName = FoodDrinkMaui.Pages.Camera
 build_metadata.AdditionalFiles.TargetPath = Pages\CameraPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\CameraPage.xaml
 
+[C:/Users/23532/Desktop/FoodDrinkMaui/Pages/LocationDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodDrinkMaui.Pages.LocationDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\LocationDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\LocationDetailPage.xaml
+
 [C:/Users/23532/Desktop/FoodDrinkMaui/Pages/LocationPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = FoodDrinkMaui.Pages.LocationPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\LocationPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\LocationPage.xaml
+
+[C:/Users/23532/Desktop/FoodDrinkMaui/Pages/RecipeDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodDrinkMaui.Pages.RecipeDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RecipeDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RecipeDetailPage.xaml
+
+[C:/Users/23532/Desktop/FoodDrinkMaui/Pages/RecipesListPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodDrinkMaui.Pages.RecipesListPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RecipesListPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RecipesListPage.xaml
+
+[C:/Users/23532/Desktop/FoodDrinkMaui/Pages/RestaurantDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodDrinkMaui.Pages.RestaurantDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RestaurantDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RestaurantDetailPage.xaml
+
+[C:/Users/23532/Desktop/FoodDrinkMaui/Pages/SearchResultsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodDrinkMaui.Pages.SearchResultsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\SearchResultsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\SearchResultsPage.xaml
 
 [C:/Users/23532/Desktop/FoodDrinkMaui/Pages/SettingsPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

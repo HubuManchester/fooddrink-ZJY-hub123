@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FoodDrinkMaui</name>
+    </assembly>
+    <members>
+        <member name="T:FoodDrinkMaui.Models.RecipeDetailData">
+            <summary>
+            Complete data for a recipe detail page.
+            A single instance drives the entire <see cref="T:FoodDrinkMaui.Pages.RecipeDetailPage"/> UI
+            including header, ingredients, instructions, and the food-type-specific special section.
+            </summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Emoji">
+            <summary>Large emoji displayed in the header banner.</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.HeaderColor">
+            <summary>Background colour of the header frame (hex).</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.AccentColor">
+            <summary>Accent colour used for instruction step badges and rating badge (hex).</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Time">
+            <summary>Cooking/preparation time (e.g. "25 min").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Difficulty">
+            <summary>Difficulty level: Easy, Medium, or Hard.</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Servings">
+            <summary>Number of servings or pieces (e.g. "4 servings", "8 tacos").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Rating">
+            <summary>Average rating score (e.g. "4.8").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Reviews">
+            <summary>Review count with parentheses (e.g. "(245)").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Description">
+            <summary>Short descriptive paragraph shown below the title.</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Ingredients">
+            <summary>List of ingredient strings displayed with checkmark bullets.</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Instructions">
+            <summary>Ordered list of cooking instruction steps (1-indexed).</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.FirstInstruction">
+            <summary>The first instruction, used by the Text-to-Speech feature when "Start Cooking" is tapped.</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.SpecialTitle">
+            <summary>Title of the food-type-specific special section (e.g. "👨‍🍳 Chef's Tips").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.SpecialColor">
+            <summary>Background colour of the special section frame (hex).</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeDetailData.Specials">
+            <summary>Array of (emoji, text) tuples rendered as the special section content.</summary>
+        </member>
+        <member name="T:FoodDrinkMaui.Models.RecipeItem">
+            <summary>
+            Represents a recipe card displayed in list views (RecipesListPage, SearchResultsPage, Quick Picks).
+            Lightweight model used only for display — detail data is in <see cref="T:FoodDrinkMaui.Models.RecipeDetailData"/>.
+            </summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeItem.Name">
+            <summary>Display name of the recipe (e.g. "Classic Beef Burger").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeItem.Emoji">
+            <summary>Emoji character used as the visual icon for this recipe.</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeItem.Time">
+            <summary>Estimated cooking/preparation time (e.g. "25 min").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeItem.Difficulty">
+            <summary>Difficulty level: Easy, Medium, or Hard.</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeItem.Category">
+            <summary>Cuisine category used for filtering (e.g. "Italian", "Japanese").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeItem.Rating">
+            <summary>Average user rating as a string (e.g. "4.7").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeItem.Reviews">
+            <summary>Number of reviews in parentheses (e.g. "(245)").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RecipeItem.ColorHex">
+            <summary>Hex colour code for the card background (e.g. "#FFECB3").</summary>
+        </member>
+        <member name="T:FoodDrinkMaui.Models.RestaurantItem">
+            <summary>
+            Represents a restaurant card displayed in the LocationPage list.
+            </summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RestaurantItem.Name">
+            <summary>Restaurant name (e.g. "Golden Dragon Restaurant").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RestaurantItem.Cuisine">
+            <summary>Cuisine type (e.g. "Chinese Cuisine").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RestaurantItem.Rating">
+            <summary>Average rating as a string (e.g. "4.5").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RestaurantItem.Distance">
+            <summary>Human-readable distance (e.g. "0.5 km away").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RestaurantItem.Status">
+            <summary>Open/closed status used for badge colour and label (e.g. "Open Now").</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RestaurantItem.Emoji">
+            <summary>Emoji icon for the restaurant card.</summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Models.RestaurantItem.ColorHex">
+            <summary>Hex colour for the icon background (e.g. "#FFECB3").</summary>
+        </member>
+        <member name="T:FoodDrinkMaui.Services.FoodDataService">
+            <summary>
+            Centralised mock data service providing all recipe and restaurant data for the app.
+            <para>
+            This is the single source of truth — all pages consume data from this service,
+            eliminating the hardcoded duplication that previously existed across XAML and code-behind files.
+            </para>
+            <para>
+            To add a new food type: add a new entry to <see cref="P:FoodDrinkMaui.Services.FoodDataService.RecipeDetails"/> and optionally
+            a corresponding <see cref="T:FoodDrinkMaui.Models.RecipeItem"/> to <see cref="P:FoodDrinkMaui.Services.FoodDataService.AllRecipes"/>.
+            </para>
+            </summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Services.FoodDataService.RecipeDetails">
+            <summary>
+            Complete recipe detail data keyed by food-type identifier (e.g. "burger", "salad").
+            Each value drives the entire RecipeDetailPage UI for that food type.
+            </summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Services.FoodDataService.AllRecipes">
+            <summary>
+            Complete list of all recipes shown in the Recipe List and Search Results pages.
+            Each entry maps to a card in the CollectionView.
+            </summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Services.FoodDataService.QuickPicks">
+            <summary>
+            Five featured recipes shown in the Quick Picks horizontal scroll on the home page.
+            </summary>
+        </member>
+        <member name="P:FoodDrinkMaui.Services.FoodDataService.Restaurants">
+            <summary>
+            List of restaurants shown on the Nearby Restaurants page.
+            </summary>
+        </member>
+        <member name="M:FoodDrinkMaui.Services.FoodDataService.Search(System.String)">
+            <summary>
+            Filters <see cref="P:FoodDrinkMaui.Services.FoodDataService.AllRecipes"/> by a search query, matching against
+            recipe name, category, and difficulty (case-insensitive).
+            Returns all recipes if the query is empty or whitespace.
+            </summary>
+            <param name="query">User's search input from the home page search bar.</param>
+            <returns>Filtered list of matching recipes.</returns>
+        </member>
+        <member name="M:FoodDrinkMaui.Services.FoodDataService.GetDetail(System.String)">
+            <summary>
+            Resolves a recipe name to its full <see cref="T:FoodDrinkMaui.Models.RecipeDetailData"/> by
+            detecting the food type from keywords in the name.
+            Falls back to burger data if no match is found.
+            </summary>
+            <param name="recipeName">The recipe name (e.g. "Classic Beef Burger").</param>
+            <returns>The matching RecipeDetailData, or burger data as default.</returns>
+        </member>
+        <member name="M:FoodDrinkMaui.Services.FoodDataService.DetectFoodType(System.String)">
+            <summary>
+            Detects the food type identifier from a recipe name using keyword matching.
+            </summary>
+        </member>
+    </members>
+</doc>

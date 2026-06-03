@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:services="clr-namespace:FoodDrinkMaui.Services"
              x:Class="FoodDrinkMaui.MainPage"
              BackgroundColor="{StaticResource Background}"
              Shell.NavBarIsVisible="False">
@@ -61,6 +62,8 @@
                                    Margin="8,0,0,0"/>
                             <Entry Grid.Column="1"
                                    x:Name="SearchEntry"
+                                   AutomationId="SearchEntry"
+                                   SemanticProperties.Description="Type a recipe name to search"
                                    Placeholder="e.g. pasta, burger, sushi..."
                                    PlaceholderColor="{StaticResource TextSecondary}"
                                    FontSize="14"
@@ -70,6 +73,8 @@
                                    ReturnCommand="{Binding Source={x:Reference SearchEntry}, Path=ReturnCommand}"/>
                             <Button Grid.Column="2"
                                     Text="Go"
+                                    AutomationId="SearchButton"
+                                    SemanticProperties.Description="Search for recipes"
                                     Style="{StaticResource PrimaryButton}"
                                     CornerRadius="12"
                                     Padding="18,10"
@@ -138,7 +143,9 @@
                                CornerRadius="20"
                                Padding="16,20"
                                HasShadow="False"
-                               HeightRequest="150">
+                               HeightRequest="150"
+                               AutomationId="ScanFoodCard"
+                               SemanticProperties.Description="Scan food to identify ingredients from a photo">
                             <VerticalStackLayout Spacing="10" VerticalOptions="Center">
                                 <Frame BackgroundColor="#4CAF50"
                                        CornerRadius="14"
@@ -172,7 +179,9 @@
                                CornerRadius="20"
                                Padding="16,20"
                                HasShadow="False"
-                               HeightRequest="150">
+                               HeightRequest="150"
+                               AutomationId="NearbyRestaurantsCard"
+                               SemanticProperties.Description="Find restaurants near your location">
                             <VerticalStackLayout Spacing="10" VerticalOptions="Center">
                                 <Frame BackgroundColor="#2196F3"
                                        CornerRadius="14"
@@ -206,7 +215,9 @@
                                CornerRadius="20"
                                Padding="16,20"
                                HasShadow="False"
-                               HeightRequest="150">
+                               HeightRequest="150"
+                               AutomationId="BrowseRecipesCard"
+                               SemanticProperties.Description="Browse over 1200 recipes">
                             <VerticalStackLayout Spacing="10" VerticalOptions="Center">
                                 <Frame BackgroundColor="{StaticResource Primary}"
                                        CornerRadius="14"
@@ -240,7 +251,9 @@
                                CornerRadius="20"
                                Padding="16,20"
                                HasShadow="False"
-                               HeightRequest="150">
+                               HeightRequest="150"
+                               AutomationId="FavoritesCard"
+                               SemanticProperties.Description="View your saved favorite recipes">
                             <VerticalStackLayout Spacing="10" VerticalOptions="Center">
                                 <Frame BackgroundColor="#E91E63"
                                        CornerRadius="14"
@@ -286,7 +299,9 @@
                     </Grid>
 
                     <!-- Big Feature Card -->
-                    <Frame Style="{StaticResource Card}">
+                    <Frame Style="{StaticResource Card}"
+                           AutomationId="FeaturedRecipeCard"
+                           SemanticProperties.Description="View today's featured recipe: Classic Beef Noodle Soup">
                         <Grid RowDefinitions="180, Auto">
                             <!-- Image Area -->
                             <Frame Grid.Row="0"
@@ -367,104 +382,49 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <!-- Quick Picks Scroll Row -->
+                <!-- Quick Picks Scroll Row — data-driven via BindableLayout -->
                 <VerticalStackLayout Spacing="14">
                     <Label Text="Quick Picks"
                            Style="{StaticResource SectionHeader}"/>
 
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <HorizontalStackLayout Spacing="12" Padding="2,4">
-
-                            <!-- Burger -->
-                            <Frame Style="{StaticResource Card}" WidthRequest="130">
-                                <VerticalStackLayout>
-                                    <Frame BackgroundColor="#FFECB3"
-                                           CornerRadius="18,18,0,0"
-                                           Padding="0"
-                                           HeightRequest="90"
-                                           HasShadow="False">
-                                        <Label Text="&#x1F354;" FontSize="44"
-                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <HorizontalStackLayout x:Name="QuickPicksStack"
+                                               BindableLayout.ItemsSource="{x:Static services:FoodDataService.QuickPicks}"
+                                               Spacing="12" Padding="2,4">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Style="{StaticResource Card}" WidthRequest="130"
+                                          AutomationId="{Binding Name}"
+                                          SemanticProperties.Description="{Binding Name}">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnQuickPickClicked"
+                                                                  CommandParameter="{Binding Name}"/>
+                                        </Frame.GestureRecognizers>
+                                        <VerticalStackLayout>
+                                            <Frame BackgroundColor="{Binding ColorHex}"
+                                                   CornerRadius="18,18,0,0"
+                                                   Padding="0" HeightRequest="90" HasShadow="False">
+                                                <Label Text="{Binding Emoji}" FontSize="44"
+                                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            </Frame>
+                                            <VerticalStackLayout Padding="12,10" Spacing="2">
+                                                <Label Text="{Binding Category}" FontSize="14"
+                                                       FontAttributes="Bold"
+                                                       TextColor="{StaticResource TextPrimary}"/>
+                                                <Label FontSize="11" TextColor="{StaticResource TextSecondary}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding Time}"/>
+                                                            <Span Text="  ⭐ "/>
+                                                            <Span Text="{Binding Rating}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </VerticalStackLayout>
+                                        </VerticalStackLayout>
                                     </Frame>
-                                    <VerticalStackLayout Padding="12,10" Spacing="2">
-                                        <Label Text="Burger" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
-                                        <Label Text="20 min  &#x2B50; 4.7" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
-                                    </VerticalStackLayout>
-                                </VerticalStackLayout>
-                            </Frame>
-
-                            <!-- Salad -->
-                            <Frame Style="{StaticResource Card}" WidthRequest="130">
-                                <VerticalStackLayout>
-                                    <Frame BackgroundColor="#C8E6C9"
-                                           CornerRadius="18,18,0,0"
-                                           Padding="0"
-                                           HeightRequest="90"
-                                           HasShadow="False">
-                                        <Label Text="&#x1F957;" FontSize="44"
-                                               HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    </Frame>
-                                    <VerticalStackLayout Padding="12,10" Spacing="2">
-                                        <Label Text="Salad" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
-                                        <Label Text="10 min  &#x2B50; 4.6" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
-                                    </VerticalStackLayout>
-                                </VerticalStackLayout>
-                            </Frame>
-
-                            <!-- Pizza -->
-                            <Frame Style="{StaticResource Card}" WidthRequest="130">
-                                <VerticalStackLayout>
-                                    <Frame BackgroundColor="#FFCDD2"
-                                           CornerRadius="18,18,0,0"
-                                           Padding="0"
-                                           HeightRequest="90"
-                                           HasShadow="False">
-                                        <Label Text="&#x1F355;" FontSize="44"
-                                               HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    </Frame>
-                                    <VerticalStackLayout Padding="12,10" Spacing="2">
-                                        <Label Text="Pizza" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
-                                        <Label Text="30 min  &#x2B50; 4.8" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
-                                    </VerticalStackLayout>
-                                </VerticalStackLayout>
-                            </Frame>
-
-                            <!-- Sushi -->
-                            <Frame Style="{StaticResource Card}" WidthRequest="130">
-                                <VerticalStackLayout>
-                                    <Frame BackgroundColor="#E1F5FE"
-                                           CornerRadius="18,18,0,0"
-                                           Padding="0"
-                                           HeightRequest="90"
-                                           HasShadow="False">
-                                        <Label Text="&#x1F363;" FontSize="44"
-                                               HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    </Frame>
-                                    <VerticalStackLayout Padding="12,10" Spacing="2">
-                                        <Label Text="Sushi" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
-                                        <Label Text="25 min  &#x2B50; 4.9" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
-                                    </VerticalStackLayout>
-                                </VerticalStackLayout>
-                            </Frame>
-
-                            <!-- Cake -->
-                            <Frame Style="{StaticResource Card}" WidthRequest="130">
-                                <VerticalStackLayout>
-                                    <Frame BackgroundColor="#F3E5F5"
-                                           CornerRadius="18,18,0,0"
-                                           Padding="0"
-                                           HeightRequest="90"
-                                           HasShadow="False">
-                                        <Label Text="&#x1F370;" FontSize="44"
-                                               HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    </Frame>
-                                    <VerticalStackLayout Padding="12,10" Spacing="2">
-                                        <Label Text="Dessert" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"/>
-                                        <Label Text="50 min  &#x2B50; 4.5" FontSize="11" TextColor="{StaticResource TextSecondary}"/>
-                                    </VerticalStackLayout>
-                                </VerticalStackLayout>
-                            </Frame>
-
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
                         </HorizontalStackLayout>
                     </ScrollView>
                 </VerticalStackLayout>

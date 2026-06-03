@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkMaui.Pages.RecipeDetailPage"
+             BackgroundColor="{StaticResource Background}"
+             Title="Recipe">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <!-- Recipe Image Header -->
+            <Frame x:Name="HeaderFrame"
+                   BackgroundColor="#FFECB3"
+                   CornerRadius="0"
+                   Padding="0"
+                   HeightRequest="220"
+                   HasShadow="False">
+                <Grid>
+                    <Label x:Name="RecipeEmoji"
+                           Text="&#x1F354;"
+                           FontSize="100"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    <!-- Rating Badge -->
+                    <Frame x:Name="RatingBadge"
+                           BackgroundColor="{StaticResource Primary}"
+                           CornerRadius="12"
+                           Padding="12,8"
+                           HasShadow="False"
+                           HorizontalOptions="End"
+                           VerticalOptions="End"
+                           Margin="16">
+                        <HorizontalStackLayout Spacing="4">
+                            <Label x:Name="RatingScore" Text="4.8" FontSize="14" FontAttributes="Bold" TextColor="White"/>
+                            <Label x:Name="RatingCount" Text="(245)" FontSize="12" TextColor="#FFFFFFCC"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </Grid>
+            </Frame>
+
+            <VerticalStackLayout Padding="20,24" Spacing="20">
+
+                <!-- Recipe Title & Info -->
+                <VerticalStackLayout Spacing="12">
+                    <Label x:Name="RecipeTitle"
+                           Text="Classic Beef Burger"
+                           FontSize="26"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}"/>
+
+                    <HorizontalStackLayout Spacing="20">
+                        <HorizontalStackLayout Spacing="6">
+                            <Label Text="&#x23F1;" FontSize="16"/>
+                            <Label x:Name="TimeLabel" Text="25 min" FontSize="14" TextColor="{StaticResource TextSecondary}"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="6">
+                            <Label Text="&#x1F373;" FontSize="16"/>
+                            <Label x:Name="DifficultyLabel" Text="Easy" FontSize="14" TextColor="{StaticResource Accent}"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="6">
+                            <Label Text="&#x1F37D;" FontSize="16"/>
+                            <Label x:Name="ServingsLabel" Text="4 servings" FontSize="14" TextColor="{StaticResource TextSecondary}"/>
+                        </HorizontalStackLayout>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- Description Section -->
+                <Frame x:Name="DescFrame"
+                       BackgroundColor="{StaticResource Surface}"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <Label x:Name="DescLabel"
+                           FontSize="14"
+                           TextColor="{StaticResource TextSecondary}"
+                           LineHeight="1.5"/>
+                </Frame>
+
+                <!-- Ingredients Section -->
+                <Frame BackgroundColor="{StaticResource Surface}"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="16">
+                        <Label Text="Ingredients"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+
+                        <VerticalStackLayout x:Name="IngredientsStack" Spacing="12">
+                            <!-- Dynamically populated -->
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Instructions Section -->
+                <Frame BackgroundColor="{StaticResource Surface}"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="16">
+                        <Label Text="Instructions"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+
+                        <VerticalStackLayout x:Name="InstructionsStack" Spacing="16">
+                            <!-- Dynamically populated -->
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Special Section (varies by food type) -->
+                <Frame x:Name="SpecialFrame"
+                       BackgroundColor="{StaticResource Surface}"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="16">
+                        <Label x:Name="SpecialTitle"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+
+                        <VerticalStackLayout x:Name="SpecialStack" Spacing="12">
+                            <!-- Dynamically populated -->
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Action Buttons -->
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                    <Button Grid.Column="0"
+                            Text="Save to Favorites"
+                            Style="{StaticResource SecondaryButton}"
+                            Clicked="OnSaveClicked"
+                            AutomationId="SaveFavoritesBtn"
+                            SemanticProperties.Description="Save this recipe to your favorites"/>
+                    <Button Grid.Column="1"
+                            Text="Start Cooking"
+                            Style="{StaticResource PrimaryButton}"
+                            Clicked="OnStartCookingClicked"
+                            AutomationId="StartCookingBtn"
+                            SemanticProperties.Description="Start cooking with text-to-speech instructions"/>
+                </Grid>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -31,13 +31,14 @@
                        CornerRadius="20"
                        Padding="0"
                        HasShadow="True"
-                       HeightRequest="280">
+                       MinimumHeightRequest="300">
                     <Grid>
                         <!-- Placeholder when no image -->
                         <VerticalStackLayout x:Name="CameraPlaceholder"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"
-                                            Spacing="16">
+                                            Spacing="16"
+                                            Padding="20">
                             <Frame BackgroundColor="#333333"
                                    CornerRadius="50"
                                    Padding="24"
@@ -52,50 +53,74 @@
                                    FontAttributes="Bold"
                                    TextColor="#AAAAAA"
                                    HorizontalOptions="Center"/>
-                            <Label Text="Tap 'Take Photo' to scan your food"
+                            <Label Text="Tap 'Take Photo' or 'Gallery' to scan your food"
                                    FontSize="13"
                                    TextColor="#777777"
-                                   HorizontalOptions="Center"/>
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"/>
                         </VerticalStackLayout>
 
-                        <!-- Captured Image -->
+                        <!-- Captured Image - AspectFit to show full image -->
                         <Image x:Name="CapturedImage"
-                               Aspect="AspectFill"
-                               IsVisible="False"/>
+                               Aspect="AspectFit"
+                               IsVisible="False"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Fill"
+                               Margin="10"/>
 
-                        <!-- Corner Guides -->
-                        <BoxView BackgroundColor="{StaticResource Accent}"
-                                 WidthRequest="30" HeightRequest="4"
-                                 HorizontalOptions="Start" VerticalOptions="Start"
-                                 Margin="16,16,0,0"/>
-                        <BoxView BackgroundColor="{StaticResource Accent}"
-                                 WidthRequest="4" HeightRequest="30"
-                                 HorizontalOptions="Start" VerticalOptions="Start"
-                                 Margin="16,16,0,0"/>
-                        <BoxView BackgroundColor="{StaticResource Accent}"
-                                 WidthRequest="30" HeightRequest="4"
-                                 HorizontalOptions="End" VerticalOptions="Start"
-                                 Margin="0,16,16,0"/>
-                        <BoxView BackgroundColor="{StaticResource Accent}"
-                                 WidthRequest="4" HeightRequest="30"
-                                 HorizontalOptions="End" VerticalOptions="Start"
-                                 Margin="0,16,16,0"/>
-                        <BoxView BackgroundColor="{StaticResource Accent}"
-                                 WidthRequest="30" HeightRequest="4"
-                                 HorizontalOptions="Start" VerticalOptions="End"
-                                 Margin="16,0,0,16"/>
-                        <BoxView BackgroundColor="{StaticResource Accent}"
-                                 WidthRequest="4" HeightRequest="30"
-                                 HorizontalOptions="Start" VerticalOptions="End"
-                                 Margin="16,0,0,16"/>
-                        <BoxView BackgroundColor="{StaticResource Accent}"
-                                 WidthRequest="30" HeightRequest="4"
-                                 HorizontalOptions="End" VerticalOptions="End"
-                                 Margin="0,0,16,16"/>
-                        <BoxView BackgroundColor="{StaticResource Accent}"
-                                 WidthRequest="4" HeightRequest="30"
-                                 HorizontalOptions="End" VerticalOptions="End"
-                                 Margin="0,0,16,16"/>
+                        <!-- Delete Button -->
+                        <Button x:Name="DeleteButton"
+                                Text="✕ Delete"
+                                BackgroundColor="#FF6B35"
+                                TextColor="White"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                Padding="12,8"
+                                CornerRadius="8"
+                                HorizontalOptions="End"
+                                VerticalOptions="Start"
+                                Margin="10"
+                                IsVisible="False"
+                                Clicked="OnDeletePhotoClicked"
+                                ZIndex="10"
+                                AutomationId="DeletePhotoBtn"
+                                SemanticProperties.Description="Remove the captured photo"/>
+
+                        <!-- Corner Guides (only visible when no image) -->
+                        <Grid x:Name="CornerGuides">
+                            <BoxView BackgroundColor="{StaticResource Accent}"
+                                     WidthRequest="30" HeightRequest="4"
+                                     HorizontalOptions="Start" VerticalOptions="Start"
+                                     Margin="16,16,0,0"/>
+                            <BoxView BackgroundColor="{StaticResource Accent}"
+                                     WidthRequest="4" HeightRequest="30"
+                                     HorizontalOptions="Start" VerticalOptions="Start"
+                                     Margin="16,16,0,0"/>
+                            <BoxView BackgroundColor="{StaticResource Accent}"
+                                     WidthRequest="30" HeightRequest="4"
+                                     HorizontalOptions="End" VerticalOptions="Start"
+                                     Margin="0,16,16,0"/>
+                            <BoxView BackgroundColor="{StaticResource Accent}"
+                                     WidthRequest="4" HeightRequest="30"
+                                     HorizontalOptions="End" VerticalOptions="Start"
+                                     Margin="0,16,16,0"/>
+                            <BoxView BackgroundColor="{StaticResource Accent}"
+                                     WidthRequest="30" HeightRequest="4"
+                                     HorizontalOptions="Start" VerticalOptions="End"
+                                     Margin="16,0,0,16"/>
+                            <BoxView BackgroundColor="{StaticResource Accent}"
+                                     WidthRequest="4" HeightRequest="30"
+                                     HorizontalOptions="Start" VerticalOptions="End"
+                                     Margin="16,0,0,16"/>
+                            <BoxView BackgroundColor="{StaticResource Accent}"
+                                     WidthRequest="30" HeightRequest="4"
+                                     HorizontalOptions="End" VerticalOptions="End"
+                                     Margin="0,0,16,16"/>
+                            <BoxView BackgroundColor="{StaticResource Accent}"
+                                     WidthRequest="4" HeightRequest="30"
+                                     HorizontalOptions="End" VerticalOptions="End"
+                                     Margin="0,0,16,16"/>
+                        </Grid>
                     </Grid>
                 </Frame>
 
@@ -120,12 +145,16 @@
                             Text="Take Photo"
                             Style="{StaticResource PrimaryButton}"
                             Clicked="OnTakePhotoClicked"
-                            HorizontalOptions="Fill"/>
+                            HorizontalOptions="Fill"
+                            AutomationId="TakePhotoBtn"
+                            SemanticProperties.Description="Open camera to take a food photo"/>
                     <Button Grid.Column="1"
                             Text="Gallery"
                             Style="{StaticResource SecondaryButton}"
                             Clicked="OnPickPhotoClicked"
-                            HorizontalOptions="Fill"/>
+                            HorizontalOptions="Fill"
+                            AutomationId="GalleryBtn"
+                            SemanticProperties.Description="Pick a food photo from the gallery"/>
                 </Grid>
 
                 <!-- Tips Card -->
